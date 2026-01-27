@@ -2,6 +2,7 @@ import React from "react";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import { useNavigate } from "react-router";
+import { noteAPI } from "../../api/api";
 
 export default function Editor({}) {
 
@@ -13,10 +14,11 @@ export default function Editor({}) {
         if (quill) {
             const editorContent = quill.root.innerHTML;
             console.log('Editor Content:', editorContent);
+            noteAPI.sendNote({ content: editorContent });
         }
         navigate('/stats');
-        
     };
+
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
