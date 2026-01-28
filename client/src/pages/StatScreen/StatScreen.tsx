@@ -1,12 +1,14 @@
 import { useState } from "react";
 import type { StatsData } from "../../types/Stats.types";
 
-const StatScreen = () => {
-    const [stats, setStats] = useState({
-        statScores: [
-            { mental: 75, physical: 80, social: 65, spiritual: 70 },
-        ] as StatsData[],
-    })
+interface statsType {
+    stats: {
+        statScores: StatsData[]
+    }
+}
+
+const StatScreen = ({stats}: statsType) => {
+
 
     return (
         <div>

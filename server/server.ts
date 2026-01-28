@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-  // Logic to handle note saving would go here
+  JSON.parse(req.body);
   res.status(201).send({ message: 'Note saved successfully' });
   console.log(req.body);
 });

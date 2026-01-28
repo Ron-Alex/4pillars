@@ -2,9 +2,12 @@ import React from "react";
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import { useNavigate } from "react-router";
-import { noteAPI } from "../../api/api";
 
-export default function Editor({}) {
+interface EditorProps {
+  onSubmitNote: (note: string) => void;
+}
+
+export default function Editor({onSubmitNote}: EditorProps) {
 
     const placeholder = 'This too will pass...';
     const { quill, quillRef } = useQuill({placeholder});
@@ -14,7 +17,7 @@ export default function Editor({}) {
         if (quill) {
             const editorContent = quill.root.innerHTML;
             console.log('Editor Content:', editorContent);
-            noteAPI.sendNote({ content: editorContent });
+            onSubmitNote(editorContent);
         }
         navigate('/stats');
     };
@@ -29,7 +32,10 @@ export default function Editor({}) {
     return (
         <div id="editor_container">
             <div id="editor" ref={quillRef} />
-            <input className="save-btn border border-gray-300 rounded-md px-4 py-2" type="submit" value="Save" onClick={handleSubmit} onKeyDown={handleKeyDown}/>
+            <div id="save_button_container" className="flex justify-end">
+                <input className="save-btn border border-gray-300 rounded-md px-4 py-2" type="submit" value="Save" onClick={handleSubmit} onKeyDown={handleKeyDown}/>
+
+            </div>
         </div>
     );
 };
