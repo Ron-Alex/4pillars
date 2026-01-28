@@ -1,10 +1,10 @@
 import Editor from "../../components/Editor/Editor";
 
 interface DashBoardProps {
-  handleSubmit: (note: string) => void;
+    handleSubmit: (note: string) => void;
 }
 
-const DashBoard = ({handleSubmit}: DashBoardProps) => {
+const DashBoard: React.FC<DashBoardProps> = ({handleSubmit}) => {
 
     return (
         <div id="dashboard_page">
