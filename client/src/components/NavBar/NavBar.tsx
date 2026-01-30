@@ -1,5 +1,7 @@
 import { useNavigate, Outlet } from "react-router-dom";
 
+import { ModeToggle } from "../mode-toggle";
+
 const NavBar = () => {
 
     const navigate = useNavigate();
@@ -10,6 +12,7 @@ const NavBar = () => {
             <li className="px-8" onClick={() => navigate('/dashboard')}>DashBoard</li>
             <li className="px-8" onClick={() => navigate('/stats')}>StatScreen</li>
             <li className="px-8" onClick={() => navigate('/profile')}>Profile</li>
+            <li className="px-8"><ModeToggle /></li>
         </ul>
         </nav>
         <Outlet />

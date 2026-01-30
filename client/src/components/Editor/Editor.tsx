@@ -3,6 +3,8 @@ import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import { useNavigate } from "react-router";
 
+import styles from "./Editor.module.css";
+
 interface EditorProps {
   onSubmitNote: (note: string) => void;
 }
